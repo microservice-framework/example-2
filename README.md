@@ -2,7 +2,7 @@
 CRUDs example instance of mFW with middleware on POST and SEARCH.
 
 middleware code:
-```nodejs
+```javascript
 /**
  * POST middleware.
  */
@@ -35,7 +35,7 @@ function recordPOST(jsonData, requestDetails, callback) {
 }
 ```
 
-```nodejs
+```javascript
 /**
  * SEARCH middleware.
  */
