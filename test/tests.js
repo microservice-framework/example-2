@@ -33,8 +33,8 @@ describe('RECORD CRUD API',function(){
 
   it('POST record 2 should return 200',function(done){
     var Record = {
-      user: "example-user",
-      body: "Example record body",
+      user: "example-user-2",
+      body: "Example record body 2",
       record_id: 2
     }
 
@@ -64,7 +64,7 @@ describe('RECORD CRUD API',function(){
   });
 
   it('SEARCH should return 200',function(done){
-    client.search({ "user": "example-user" }, function(err, handlerResponse){
+    client.search({ "body": { $regex: 'body', $options: 'i' } }, function(err, handlerResponse){
       console.log(handlerResponse);
       expect(err).to.equal(null);
       expect(handlerResponse).to.not.equal(null);
