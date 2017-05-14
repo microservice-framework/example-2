@@ -22,7 +22,6 @@ describe('RECORD CRUD API',function(){
     }
 
     client.post(Record, function(err, handlerResponse){
-      console.log(handlerResponse);
       RecordID = handlerResponse.id;
       RecordToken = handlerResponse.token;
 
@@ -39,7 +38,6 @@ describe('RECORD CRUD API',function(){
     }
 
     client.post(Record, function(err, handlerResponse){
-      console.log(handlerResponse);
       RecordID2 = handlerResponse.id;
       RecordToken2 = handlerResponse.token;
 
@@ -56,7 +54,6 @@ describe('RECORD CRUD API',function(){
     }
 
     client.post(Record, function(err, handlerResponse){
-      console.log(handlerResponse);
       expect(err).to.equal(null);
       expect(handlerResponse.record_id).to.equal(2);
       done();
@@ -65,7 +62,6 @@ describe('RECORD CRUD API',function(){
 
   it('SEARCH should return 200',function(done){
     client.search({ "body": { $regex: 'body', $options: 'i' } }, function(err, handlerResponse){
-      console.log(handlerResponse);
       expect(err).to.equal(null);
       expect(handlerResponse).to.not.equal(null);
       done();
@@ -74,14 +70,12 @@ describe('RECORD CRUD API',function(){
 
   it('GET should record 1 return 200',function(done){
     client.get(RecordID, RecordToken, function(err, handlerResponse){
-      console.log(handlerResponse);
       expect(err).to.equal(null);
       done();
     });
   });
   it('GET should record 2 return 200',function(done){
     client.get(RecordID2, RecordToken2, function(err, handlerResponse){
-      console.log(handlerResponse);
       expect(err).to.equal(null);
       done();
     });
@@ -90,7 +84,6 @@ describe('RECORD CRUD API',function(){
 
   it('DELETE record1 should return 200',function(done){
     client.delete(RecordID, RecordToken, function(err, handlerResponse){
-      console.log(handlerResponse);
       expect(err).to.equal(null);
       done();
     });
@@ -98,7 +91,6 @@ describe('RECORD CRUD API',function(){
 
   it('DELETE record2 should return 200',function(done){
     client.delete(RecordID2, RecordToken2, function(err, handlerResponse){
-      console.log(handlerResponse);
       expect(err).to.equal(null);
       done();
     });
@@ -106,16 +98,14 @@ describe('RECORD CRUD API',function(){
 
   it('GET after delete should return nothing',function(done){
     client.get(RecordID, RecordToken, function(err, handlerResponse){
-      console.log(handlerResponse);
-      expect(handlerResponse.message).to.equal('Not found');
+      expect(err).to.not.equal(null);
       done();
     });
   });
 
   it('GET after delete should return nothing',function(done){
     client.get(RecordID2, RecordToken2, function(err, handlerResponse){
-      console.log(handlerResponse);
-      expect(handlerResponse.message).to.equal('Not found');
+      expect(err).to.not.equal(null);
       done();
     });
   });

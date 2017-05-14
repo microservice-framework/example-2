@@ -5,7 +5,7 @@
 
 const Cluster = require('@microservice-framework/microservice-cluster');
 const Microservice = require('@microservice-framework/microservice');
-const MicroserviceRouterRegister = require('@microservice-framework/microservice-router-register');
+
 
 require('dotenv').config();
 
@@ -50,11 +50,11 @@ function recordPOST(jsonData, requestDetails, callback) {
       return callback(err);
     }
     if (handlerResponse.code == 404) {
-      mservice.post(jsonData, requestDetails, callback);
-    } else {
-      handlerResponse.answer = handlerResponse.answer[0];
-      callback(null, handlerResponse);
+      return mservice.post(jsonData, requestDetails, callback);
     }
+
+    handlerResponse.answer = handlerResponse.answer[0];
+    callback(null, handlerResponse);
   });
 }
 

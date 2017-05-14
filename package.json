@@ -1,14 +1,14 @@
 {
   "name": "example-2",
-  "version": "1.0.0",
-  "description": "Basic example instance of mFW",
+  "version": "1.0.1",
+  "description": "Router based example instance of mFW",
   "main": "example-2.js",
   "scripts": {
     "test": "node_modules/.bin/mocha  --timeout 15000",
-    "start": "DEBUG=http:log,cluster:* node  --max-old-space-size=48 example-2.js >> `cat .env|grep LOGFILE|awk -F= {'print$2'}` 2>&1 &",
-    "stop": "cat `cat .env|grep PIDFILE|awk -F= {'print$2'}` |xargs kill -2  2>&1 &",
-    "jscs": "jscs --fix example-2.js test/*.js",
-    "devel-start": "DEBUG=* node  --max-old-space-size=48 example-2.js"
+    "start": "DEBUG=http:log,cluster:* node  --max-old-space-size=48 example-2.js",
+    "stop": "node kill.js",
+    "status": "node status.js",
+    "jscs": "jscs --fix example-2.js test/*.js"
   },
   "repository": {
     "type": "git",
@@ -20,15 +20,14 @@
     "url": "https://github.com/microservice-framework/example-2/issues"
   },
   "dependencies": {
-    "@microservice-framework/microservice": "^1.0.3",
-    "@microservice-framework/microservice-cluster": "^1.0.1",
-    "@microservice-framework/microservice-router-register": "^1.0.0",
+    "@microservice-framework/microservice": "^1.2.5",
+    "@microservice-framework/microservice-cluster": "^1.2.1",
     "dotenv": "^2.0.0"
   },
   "devDependencies": {
+    "@microservice-framework/microservice-client": "^1.2.2",
     "chai": "^3.5.0",
-    "mocha": "^3.0.2",
-    "@microservice-framework/microservice-client": "^1.0.1"
+    "mocha": "^3.0.2"
   },
   "homepage": "https://github.com/microservice-framework/example-2#readme"
 }
